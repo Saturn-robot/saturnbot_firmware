@@ -28,7 +28,6 @@ long Ping(int pin) {
 
   // convert the time into meters
   range = microsecondsToCm(duration);
-  
+
   return(range);
 }
-

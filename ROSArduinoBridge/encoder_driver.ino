@@ -1,12 +1,12 @@
 /* *************************************************************
    Encoder definitions
-   
+
    Add an "#ifdef" block to this file to include support for
    a particular encoder board or library. Then add the appropriate
    #define near the top of the main ROSArduinoBridge.ino file.
-   
+
    ************************************************************ */
-   
+
 #ifdef USE_BASE
 
 #ifdef ROBOGAIA
@@ -15,7 +15,7 @@
 
   /* Create the encoder shield object */
   MegaEncoderCounter encoders = MegaEncoderCounter(4); // Initializes the Mega Encoder Counter in the 4X Count mode
-  
+
   /* Wrap the encoder reading function */
   long readEncoder(int i) {
     if (i == LEFT) return encoders.YAxisGetCount();
@@ -34,7 +34,7 @@ volatile unsigned long fleftCount = 0;
 volatile unsigned long frightCount = 0;
 volatile unsigned long bleftCount = 0;
 volatile unsigned long brightCount = 0;
-    
+
   /* Wrap the encoder initializeing to be run in the main setup() function */
   void initEncoders() {
     pinMode(FLH_ENCODER_A, INPUT);
@@ -54,7 +54,7 @@ volatile unsigned long brightCount = 0;
 
     Serial.begin(57600);
   }
-  
+
   // encoder event for the interrupt call
   void fleftEncoderEvent() {
     if (digitalRead(FLH_ENCODER_A) == HIGH) {
@@ -177,4 +177,3 @@ void resetEncoders() {
 }
 
 #endif
-

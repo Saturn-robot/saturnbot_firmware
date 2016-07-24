@@ -2,7 +2,7 @@
    Servo Sweep - by Nathaniel Gallinger
 
    Sweep servos one degree step at a time with a user defined
-   delay in between steps.  Supports changing direction 
+   delay in between steps.  Supports changing direction
    mid-sweep.  Important for applications such as robotic arms
    where the stock servo speed is too fast for the strength
    of your system.
