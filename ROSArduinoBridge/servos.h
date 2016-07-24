@@ -4,9 +4,9 @@
 
 #define N_SERVOS 2
 
-// This delay in milliseconds determines the pause 
-// between each one degree step the servo travels.  Increasing 
-// this number will make the servo sweep more slowly.  
+// This delay in milliseconds determines the pause
+// between each one degree step the servo travels.  Increasing
+// this number will make the servo sweep more slowly.
 // Decreasing this number will make the servo sweep more quickly.
 // Zero is the default number and will make the servos spin at
 // full speed.  150 ms makes them spin very slowly.

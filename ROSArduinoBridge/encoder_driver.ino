@@ -47,8 +47,8 @@ volatile unsigned long brightCount = 0;
     pinMode(BLH_ENCODER_B, INPUT);
 
     // initialize hardware interrupts
-    attachInterrupt(0, fleftEncoderEvent, CHANGE);
-    attachInterrupt(1, frightEncoderEvent, CHANGE);
+    attachInterrupt(4, fleftEncoderEvent, CHANGE);
+    attachInterrupt(5, frightEncoderEvent, CHANGE);
     attachInterrupt(3, bleftEncoderEvent, CHANGE);
     attachInterrupt(2, brightEncoderEvent, CHANGE);
 

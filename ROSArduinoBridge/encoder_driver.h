@@ -10,7 +10,7 @@
   #define FRH_ENCODER_B 22
   #define BRH_ENCODER_A 21
   #define BRH_ENCODER_B 24
-  #define FLH_ENCODER_A 2
+  #define FLH_ENCODER_A 19
   #define FLH_ENCODER_B 23
   #define BLH_ENCODER_A 20
   #define BLH_ENCODER_B 25
