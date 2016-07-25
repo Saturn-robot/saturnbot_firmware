@@ -1,5 +1,5 @@
 /* *******************************************************************
-   Encoder driver function definitions 1- by James Nugen,Chaoyang Liu
+   Encoder driver function definitions by Chaoyang Liu
    ***************************************************************** */
 
 

@@ -1,3 +1,9 @@
+/***********************************************************************
+    This file is from James Nugen's pirobot which lives at:
+    https://github.com/hbrobotics/ros_arduino_bridge ,
+    and I modified it to adapt my own robot.
+************************************************************************/
+
 /* *************************************************************
    Encoder definitions
 
@@ -9,25 +15,7 @@
 
 #ifdef USE_BASE
 
-#ifdef ROBOGAIA
-  /* The Robogaia Mega Encoder shield */
-  #include "MegaEncoderCounter.h"
-
-  /* Create the encoder shield object */
-  MegaEncoderCounter encoders = MegaEncoderCounter(4); // Initializes the Mega Encoder Counter in the 4X Count mode
-
-  /* Wrap the encoder reading function */
-  long readEncoder(int i) {
-    if (i == LEFT) return encoders.YAxisGetCount();
-    else return encoders.XAxisGetCount();
-  }
-
-  /* Wrap the encoder reset function */
-  void resetEncoder(int i) {
-    if (i == LEFT) return encoders.YAxisReset();
-    else return encoders.XAxisReset();
-  }
-#elif defined(ARDUINO_ENC_COUNTER)
+#ifdef ARDUINO_ENC_COUNTER
 // variables to store the number of encoder pulses
 // for each motor
 volatile unsigned long fleftCount = 0;

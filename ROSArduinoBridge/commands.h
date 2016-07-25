@@ -1,3 +1,9 @@
+/***********************************************************************
+    This file is from James Nugen's pirobot which lives at:
+    https://github.com/hbrobotics/ros_arduino_bridge ,
+    and I modified it to adapt my own robot.
+************************************************************************/
+
 /* Define single-letter commands that will be sent by the PC over the
    serial link.
 */
@@ -18,14 +24,12 @@
 #define UPDATE_PID     'u'
 #define DIGITAL_WRITE  'w'
 #define ANALOG_WRITE   'x'
-#define FLEFT           0
-#define FRIGHT          1
-#define BLEFT           2
-#define BRIGHT          3
+#define FLEFT           1
+#define FRIGHT          0
+#define BLEFT           3
+#define BRIGHT          2
 /*These Mcro is used to debug*/
 #define READ_MOTORS     'M'
 /*--------------------------*/
 
 #endif
-
-

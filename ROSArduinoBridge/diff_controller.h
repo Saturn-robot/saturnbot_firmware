@@ -1,7 +1,13 @@
+/***********************************************************************
+    This file is from James Nugen's pirobot which lives at:
+    https://github.com/hbrobotics/ros_arduino_bridge ,
+    and I modified it to adapt my own robot.
+************************************************************************/
+
 /* Functions and type-defs for PID control.
 
    Taken mostly from Mike Ferguson's ArbotiX code which lives at:
-   
+
    http://vanadium-ros-pkg.googlecode.com/svn/trunk/arbotix/
 */
 
@@ -123,7 +129,7 @@ void updatePID() {
   frightPID.Encoder = readEncoder(FRIGHT);
   bleftPID.Encoder = readEncoder(BLEFT);
   brightPID.Encoder = readEncoder(BRIGHT);
-  
+
   /* If we're not moving there is nothing more to do */
   if (!moving){
     /*
@@ -145,4 +151,3 @@ void updatePID() {
   /* Set the motor speeds accordingly */
   setMotorSpeeds(fleftPID.output, frightPID.output, bleftPID.output, brightPID.output);
 }
-

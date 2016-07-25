@@ -1,3 +1,9 @@
+/***********************************************************************
+    This file is from James Nugen's pirobot which lives at:
+    https://github.com/hbrobotics/ros_arduino_bridge ,
+    and I modified it to adapt my own robot.
+************************************************************************/
+
 /*********************************************************************
  *  ROSArduinoBridge
 
@@ -252,7 +258,8 @@ int runCommand() {
  case READ_MOTORS:
     Serial.print(m1);
     Serial.print(F(" "));
-    Serial.println(m2);
+    Serial.print(m2);
+    Serial.print(F(" "));
     Serial.print(m3);
     Serial.print(F(" "));
     Serial.println(m4);
