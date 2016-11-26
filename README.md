@@ -2,7 +2,7 @@
 
 This project is to driver our robot's hardwares.
 
-# mannul
+# MANNUL
 
 ## 内部接线
 
