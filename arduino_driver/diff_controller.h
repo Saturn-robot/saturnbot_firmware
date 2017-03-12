@@ -1,18 +1,13 @@
-/***********************************************************************
-    This file is from James Nugen's pirobot which lives at:
-    https://github.com/hbrobotics/ros_arduino_bridge ,
-    and I modified it to adapt my own robot.
-************************************************************************/
-
 /* Functions and type-defs for PID control.
 
-   Taken mostly from Mike Ferguson's ArbotiX code which lives at:
+   Taken mostly from Patrick Goebel's Pirobot code which lives at:
 
-   http://vanadium-ros-pkg.googlecode.com/svn/trunk/arbotix/
+   https://github.com/hbrobotics/ros_arduino_bridge
 */
 
 /* PID setpoint info For a Motor */
-typedef struct {
+typedef struct
+{
   double TargetTicksPerFrame;    // target speed in ticks per frame
   long Encoder;                  // encoder count
   long PrevEnc;                  // last encoder count
@@ -36,7 +31,7 @@ typedef struct {
 }
 SetPointInfo;
 
-SetPointInfo fleftPID, frightPID, bleftPID, brightPID;
+SetPointInfo leftPID, rightPID;
 
 /* PID Parameters */
 int Kp = 20;
@@ -54,38 +49,26 @@ unsigned char moving = 0; // is the base in motion?
 * Note that the assumption here is that PID is only turned on
 * when going from stop to moving, that's why we can init everything on zero.
 */
-void resetPID(){
-   fleftPID.TargetTicksPerFrame = 0.0;
-   fleftPID.Encoder = readEncoder(FLEFT);
-   fleftPID.PrevEnc = fleftPID.Encoder;
-   fleftPID.output = 0;
-   fleftPID.PrevInput = 0;
-   fleftPID.ITerm = 0;
+void resetPID()
+{
+   leftPID.TargetTicksPerFrame = 0.0;
+   leftPID.Encoder = readEncoder(LEFT);
+   leftPID.PrevEnc = leftPID.Encoder;
+   leftPID.output = 0;
+   leftPID.PrevInput = 0;
+   leftPID.ITerm = 0;
 
-   frightPID.TargetTicksPerFrame = 0.0;
-   frightPID.Encoder = readEncoder(FRIGHT);
-   frightPID.PrevEnc = frightPID.Encoder;
-   frightPID.output = 0;
-   frightPID.PrevInput = 0;
-   frightPID.ITerm = 0;
-
-   bleftPID.TargetTicksPerFrame = 0.0;
-   bleftPID.Encoder = readEncoder(BLEFT);
-   bleftPID.PrevEnc = bleftPID.Encoder;
-   bleftPID.output = 0;
-   bleftPID.PrevInput = 0;
-   bleftPID.ITerm = 0;
-
-   brightPID.TargetTicksPerFrame = 0.0;
-   brightPID.Encoder = readEncoder(BRIGHT);
-   brightPID.PrevEnc = brightPID.Encoder;
-   brightPID.output = 0;
-   brightPID.PrevInput = 0;
-   brightPID.ITerm = 0;
+   rightPID.TargetTicksPerFrame = 0.0;
+   rightPID.Encoder = readEncoder(RIGHT);
+   rightPID.PrevEnc = rightPID.Encoder;
+   rightPID.output = 0;
+   rightPID.PrevInput = 0;
+   rightPID.ITerm = 0;
 }
 
 /* PID routine to compute the next motor commands */
-void doPID(SetPointInfo * p) {
+void doPID(SetPointInfo * p)
+{
   long Perror;
   long output;
   int input;
@@ -123,31 +106,30 @@ void doPID(SetPointInfo * p) {
 }
 
 /* Read the encoder values and call the PID routine */
-void updatePID() {
+void updatePID()
+{
   /* Read the encoders */
-  fleftPID.Encoder = readEncoder(FLEFT);
-  frightPID.Encoder = readEncoder(FRIGHT);
-  bleftPID.Encoder = readEncoder(BLEFT);
-  brightPID.Encoder = readEncoder(BRIGHT);
+  leftPID.Encoder = readEncoder(LEFT);
+  rightPID.Encoder = readEncoder(RIGHT);
 
   /* If we're not moving there is nothing more to do */
-  if (!moving){
+  if (!moving)
+  {
     /*
     * Reset PIDs once, to prevent startup spikes,
     * see http://brettbeauregard.com/blog/2011/04/improving-the-beginner%E2%80%99s-pid-initialization/
     * PrevInput is considered a good proxy to detect
     * whether reset has already happened
     */
-    if (fleftPID.PrevInput != 0 || frightPID.PrevInput != 0 || bleftPID.PrevInput != 0 || brightPID.PrevInput != 0) resetPID();
+    if (leftPID.PrevInput != 0 || rightPID.PrevInput != 0)
+      resetPID();
     return;
   }
 
   /* Compute PID update for each motor */
-  doPID(&frightPID);
-  doPID(&fleftPID);
-  doPID(&bleftPID);
-  doPID(&brightPID);
+  doPID(&rightPID);
+  doPID(&leftPID);
 
   /* Set the motor speeds accordingly */
-  setMotorSpeeds(fleftPID.output, frightPID.output, bleftPID.output, brightPID.output);
+  setMotorSpeeds(leftPID.output, rightPID.output);
 }
