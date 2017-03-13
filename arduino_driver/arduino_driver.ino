@@ -1,11 +1,18 @@
   /*********************************************************************
-   *  arduino driver for Saturn Robot
+   *  arduino driver for Saturn Robot:https://github.com/Saturn-robot/
 
      A set of simple serial commands to control a differential drive
      robot and receive back sensor and odometry data.I modify file
      "ROSArduinoBridge.ino" and get this file "arduino_driver.ino".
      Other files are all written by ourselves and inspired and modeled
      after by Patrick Goebel.
+
+     Authors: Patrick Goebel, James Nugen
+     Modified by Chaoyang Liu, email:chaoyanglius@gmail.com
+
+     Inspired and modeled after the ArbotiX driver by Michael Ferguson
+
+     Software License Agreement (BSD License)
 
      Copyright (c) 2012, Patrick Goebel.
      All rights reserved.
