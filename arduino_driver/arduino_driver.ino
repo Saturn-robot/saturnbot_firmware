@@ -1,18 +1,39 @@
-/***********************************************************************
- * arduino driver for Saturn Robot
- *
- * A set of simple serial commands to control a differential drive
- * robot and receive back sensor and odometry data.
- *
- * Inspired and modeled after the Pirobot driver by Patrick Goebel
- *
- * Author: Chaoyang Liu
- * E-main: chaoyanglius@outlook.com
- *
- * Software License Agreement (GPL License)
- * Copyright (c) 2017, Chaoyang Liu
- *
- ************************************************************************/
+  /*********************************************************************
+   *  arduino driver for Saturn Robot
+
+     A set of simple serial commands to control a differential drive
+     robot and receive back sensor and odometry data.I modify file
+     "ROSArduinoBridge.ino" and get this file "arduino_driver.ino".
+     Other files are all written by ourselves and inspired and modeled
+     after by Patrick Goebel.
+
+     Copyright (c) 2012, Patrick Goebel.
+     All rights reserved.
+
+     Redistribution and use in source and binary forms, with or without
+     modification, are permitted provided that the following conditions
+     are met:
+
+      * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above
+        copyright notice, this list of conditions and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution.
+
+     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+     "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+     LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+     FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+     COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+     BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+     CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+     LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  *  POSSIBILITY OF SUCH DAMAGE.
+  *********************************************************************/
 
 /* Include the paramerers setting */
 #include "params_setting.h"
@@ -224,43 +245,3 @@ void loop()
     moving = 0;
   }
 }
-
-/*********************************************************************
- *  Here is Original License which is BSD License:
-
-    Created for the Pi Robot Project: http://www.pirobot.org
-    and the Home Brew Robotics Club (HBRC): http://hbrobotics.org
-
-    Authors: Patrick Goebel, James Nugen
-
-    Inspired and modeled after the ArbotiX driver by Michael Ferguson
-
-    Software License Agreement (BSD License)
-
-    Copyright (c) 2012, Patrick Goebel.
-    All rights reserved.
-
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
-
-     * Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
-     * Redistributions in binary form must reproduce the above
-       copyright notice, this list of conditions and the following
-       disclaimer in the documentation and/or other materials provided
-       with the distribution.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- *  POSSIBILITY OF SUCH DAMAGE.
- *********************************************************************/
