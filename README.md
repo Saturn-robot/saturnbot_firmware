@@ -1,16 +1,13 @@
-# OVERVIEW
+[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
-This project is to driver our robot's hardwares.
+# 概述
 
-# MANNUL
+本固件程序为Saturn rotbot(本组织正在开发的机器人)的专用固件程序，核心部件是Arduino Mega 2560。目前主要支持AB相编码器、L298N双路电动机驱动板、GY-85 IMU惯性测量模组等传感器。
 
-## 内部接线
+# 引脚分配
 
-## 电动机驱动板
+- L298N电动机驱动板
 
-L298N电动机驱动板
-
-- Arduino
 
 | L298N     | Arduino  |
 | :------------- | :------------- |
@@ -21,22 +18,7 @@ L298N电动机驱动板
 | IN3 | D9 |
 | IN4 | D10 |
 
-- 电源
-
-使用12V电源，因此+12v接线柱接电源正极，GND接电源负极。
-
-- 电动机
-
-| L298N     | MOTORS |
-| :------------- | :------------- |
-| OUT1 | 左电机线+ |
-| OUT2 | 左电机线- |
-| OUT3 | 右电机线- |
-| OUT4 | 右电机线+ |
-
-## 编码器
-
-- Arduino
+- AB相编码器
 
 | encoders | Arduino  |
 | :------------- | :------------- |
@@ -49,7 +31,11 @@ L298N电动机驱动板
 | 右+5V  | +5V |
 | 右GND | GND |
 
-## 外部接线
+- GY85惯性测量模组
 
-在每个杜邦线上都贴有相应的标识，以标识这些线对应的接口。
-
+| GY85 | Arduino  |
+| :------------- | :------------- |
+| VCC | +5V |
+| GND | GND |
+| SDA | D20 |
+| SCL | D21 |
