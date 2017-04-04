@@ -61,6 +61,9 @@
 /* PID parameters and functions */
 #include "diff_controller.h"
 
+/* IMU driver functions definitions */
+#include "imu.h"
+
 /* Variable initialization */
 
 // A pair of varibles to help parse serial commands (thanks Fergs)
@@ -166,6 +169,35 @@ int runCommand()
     Ko = pid_args[3];
     Serial.println("OK");
     break;
+  case READ_IMU:
+    imu_data = readIMU();
+    /* Send the IMU data base in the following order
+     * [ax, ay, az, gx, gy, gz, mx, my, mz, roll, pitch, ch]
+     */
+    Serial.print(imu_data.ax);
+    Serial.print(F(" "));
+    Serial.print(imu_data.ay);
+    Serial.print(F(" "));
+    Serial.print(imu_data.az);
+    Serial.print(F(" "));
+    Serial.print(imu_data.gx);
+    Serial.print(F(" "));
+    Serial.print(imu_data.gy);
+    Serial.print(F(" "));
+    Serial.print(imu_data.gz);
+    Serial.print(F(" "));
+    Serial.print(imu_data.mx);
+    Serial.print(F(" "));
+    Serial.print(imu_data.my);
+    Serial.print(F(" "));
+    Serial.print(imu_data.mz);
+    Serial.print(F(" "));
+    Serial.print(imu_data.roll);
+    Serial.print(F(" "));
+    Serial.print(imu_data.pitch);
+    Serial.print(F(" "));
+    Serial.println(imu_data.ch);
+    break;
   default:
     Serial.println("Invalid Command");
     break;
@@ -180,6 +212,7 @@ void setup()
 // Initialize sensors
   initMotorController();
   initEncoders();
+  initIMU();
   initUltrasonic();
   resetPID();
 }

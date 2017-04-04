@@ -90,3 +90,12 @@
 | GND | GND |
 | SDA | D20 |
 | SCL | D21 |
+
+## 超声波传感器
+
+| GY85 | Arduino  |
+| :------------- | :------------- |
+| VCC | +5V |
+| GND | GND |
+| TrigPin | D25 |
+| EchoPin | D26 |

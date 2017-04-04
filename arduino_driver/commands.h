@@ -11,6 +11,7 @@
   #define PIN_MODE       'c'
   #define DIGITAL_READ   'd'
   #define READ_ENCODERS  'e'
+  #define READ_IMU       'i'  
   #define MOTOR_SPEEDS   'm'
   #define ULTRASONIC     'o'
   #define RESET_ENCODERS 'r'

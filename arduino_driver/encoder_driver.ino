@@ -13,7 +13,7 @@ void initEncoders()
     pinMode(RIGHT_ENC_B, INPUT);
 
     attachInterrupt(0, leftEncoderEvent, CHANGE);
-    attachInterrupt(2, rightEncoderEvent, CHANGE);
+    attachInterrupt(1, rightEncoderEvent, CHANGE);
 }
 
   // encoder event for the interrupt call
