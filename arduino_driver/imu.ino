@@ -28,7 +28,10 @@
 ADXL345 acc; //variable adxl is an instance of the ADXL345 library
 HMC5883L compass;
 ITG3200 gyro = ITG3200();
-const float GyroPercentage = 0.9;
+const float GyroPercentage = 1;
+
+#define SENSORS_GRAVITY_STANDARD 9.8
+#define DEG_TO_RAD 0.01745
 
 void initIMU()
 {
@@ -65,9 +68,9 @@ imuData readIMU()
   // code fragment for Accelerometer angles (roll and pitch)
   acc.readAccel(&raw_ax, &raw_ay, &raw_az); //read the accelerometer values and store them in variables  x,y,z
   // get values in unit G
-  float ax = raw_ax * 0.0039;
-  float ay = raw_ay * 0.0039;
-  float az = raw_az * 0.0039;
+  float ax = raw_ax * 0.0039 * SENSORS_GRAVITY_STANDARD;
+  float ay = raw_ay * 0.0039 * SENSORS_GRAVITY_STANDARD;
+  float az = raw_az * 0.0039 * SENSORS_GRAVITY_STANDARD;
 
   // Code fragment for Magnetometer yaw
   MagnetometerRaw raw = compass.ReadRawAxis();
@@ -88,9 +91,9 @@ imuData readIMU()
   // Get delta time
   unsigned long looptime = millis() - time;
   // get values of gyro
-  float gx = (raw_gx) / 14.375;
-  float gy = (raw_gy) / 14.375;
-  float gz = (raw_gz) / 14.375;
+  float gx = ((raw_gx) / 14.375) * DEG_TO_RAD;
+  float gy = ((raw_gy) / 14.375) * DEG_TO_RAD;
+  float gz = ((raw_gz) / 14.375) * DEG_TO_RAD;
 
   // compute accel angles of x, y
   accel_roll = atan(ay / sqrt(ax * ax + az * az));
