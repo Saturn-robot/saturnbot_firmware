@@ -62,7 +62,8 @@
 #include "diff_controller.h"
 
 /* IMU driver functions definitions */
-#include "imu.h"
+#include <Wire.h>
+#include <GY85.h>
 
 /* Variable initialization */
 
@@ -84,6 +85,8 @@ char argv2[16];
 long arg1;
 long arg2;
 
+GY85 gy85(1234, 1235, 1236);
+imuData imu_data;
 /* Clear the current command parameters */
 void resetCommand()
 {
@@ -170,7 +173,7 @@ int runCommand()
     Serial.println("OK");
     break;
   case READ_IMU:
-    imu_data = readIMU();
+    imu_data = gy85.readIMU();
     /* Send the IMU data base in the following order
      * [ax, ay, az, gx, gy, gz, mx, my, mz, roll, pitch, ch]
      */
@@ -190,13 +193,13 @@ int runCommand()
     Serial.print(F(" "));
     Serial.print(imu_data.my);
     Serial.print(F(" "));
-    Serial.print(imu_data.mz);
-    Serial.print(F(" "));
-    Serial.print(imu_data.roll);
-    Serial.print(F(" "));
-    Serial.print(imu_data.pitch);
-    Serial.print(F(" "));
-    Serial.println(imu_data.ch);
+    Serial.println(imu_data.mz);
+    // Serial.print(F(" "));
+    // Serial.print(imu_data.roll);
+    // Serial.print(F(" "));
+    // Serial.print(imu_data.pitch);
+    // Serial.print(F(" "));
+    // Serial.println(imu_data.ch);
     break;
   default:
     Serial.println("Invalid Command");
@@ -212,7 +215,7 @@ void setup()
 // Initialize sensors
   initMotorController();
   initEncoders();
-  initIMU();
+  gy85.init();
   initUltrasonic();
   resetPID();
 }
